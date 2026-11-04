@@ -7,7 +7,7 @@ import pandas as pd
 import streamlit as st
 from xgboost import XGBRegressor
 
-st.set_page_config(page_title="Bike Rental Demand Predictor", page_icon="🚲", layout="wide")
+st.set_page_config(page_title="Bike Rental Demand Predictor", page_icon="🚲", layout="wide", initial_sidebar_state="expanded")
 
 
 # ------------------------------------------------------------------ model
@@ -105,7 +105,10 @@ def inject_css(t):
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 html, body, [class*="css"], .stApp {{ font-family: 'Poppins', sans-serif; }}
 .stApp {{ background: {t['bg']}; background-attachment: fixed; }}
-#MainMenu, footer, header[data-testid="stHeader"] {{ visibility: hidden; }}
+#MainMenu, footer, [data-testid="stToolbarActions"], [data-testid="stMainMenu"], [data-testid="stAppDeployButton"], [data-testid="stStatusWidget"] {{ visibility: hidden; }}
+header[data-testid="stHeader"] {{ background: transparent; }}
+[data-testid="stExpandSidebarButton"], [data-testid="stSidebarCollapseButton"], [data-testid="collapsedControl"] {{ visibility: visible !important; }}
+[data-testid="stExpandSidebarButton"] *, [data-testid="stSidebarCollapseButton"] *, [data-testid="collapsedControl"] * {{ color: {t['text']} !important; }}
 .block-container {{ padding-top: 1.2rem; max-width: 1150px; }}
 .stApp, .stApp p, .stApp label, .stApp span, .stApp h1, .stApp h2, .stApp h3, .stApp li,
 [data-testid="stWidgetLabel"] p, [data-testid="stMetricValue"], [data-testid="stCaptionContainer"] {{ color: {t['text']} !important; }}
